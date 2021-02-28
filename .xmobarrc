@@ -1,0 +1,62 @@
+Config { font = "xft:Hack Nerd Font:weight=bold:pixelsize=12"
+        , borderColor =	"grey"
+        , border =	BottomB
+        , bgColor =	"#000000"
+        , fgColor =	"#ffffff"
+        , position =	TopW L 100
+
+        , sepChar = "%"
+        , alignSep = "}{"
+        , template = "   <fc=#a7e160>%StdinReader%</fc> }{ <fc=#03c03c>%cpu% %coretemp%</fc> | <fc=#a073d6>%memory%</fc> | <fc=#dbd560>%bright% %default:Master%</fc> | <fc=#a7e160>%battery%</fc> | <fc=#69b2d6>%date%</fc> "
+
+        , commands =	[ Run Weather "EPWR" 	[ "-L", "10"
+						, "-H", "25"
+						, "--normal", "#a7e160"
+						, "--high", "red"
+						, "--low", "lightblue"
+        					, "-t", "<tempC>C"
+						] 36000
+
+			, Run Cpu 		[ "--High", "80"
+						, "--high", "#ff6680"
+						, "-t", "\xf821  <total>%"
+						] 10
+
+                        , Run Memory		[ "-t", "\xf85a <used>M"] 10
+
+                        , Run Date		"\xf133  %d %b %Y %H:%M:%S" "date" 10
+
+                        , Run StdinReader
+
+			, Run CoreTemp       	[ "--template" 	, "<core0>°C"
+                             			, "--High"     	, "80"        -- units: °C
+						, "--high"      , "#ff6680"
+                             			] 50
+
+			, Run Battery		[ "--template" 	, "<acstatus>"
+						, "--Low"      	, "10"        -- units: %
+						, "--High"     	, "80"        -- units: %
+						, "--low"      	, "#ff6680"
+						, "--" -- battery specific options
+                                      			-- discharging status
+                                       			, "-o"	, " <left>% (<timeleft>)"
+                                       			-- AC "on" status
+                                       			, "-O"	, "\xf583 <left>%"
+                                       			-- charged status
+                                       			, "-i"	, "\xf578 full"
+							-- icons for different stages of discharge
+							, "--lows", "\xf57a"
+							, "--mediums", "\xf57d"
+							, "--highs", "\xf581"
+                             			] 50
+			, Run Volume		"default" "Master"
+						[ "--template"	, "<status> <volume>%"
+						, "--"
+							, "--on"	, "\xfa7d "
+							, "--off"	, "\xfa80 "
+							, "-C"		, "#dbd560"
+							, "-c"		, "#dbd560"
+						] 10
+			, Run Brightness	[ "--template"	, "\xfaa7  <percent>% "] 10
+                        ]
+        }
