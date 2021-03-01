@@ -38,10 +38,10 @@
 
 !! URxvt Appearance
 ! fonts
-URxvt*font: xft:Source Code Pro:size=11
-URxvt*boldFont: xft:Source Code Pro:style=Bold:size=11
-URxvt*italicFont: xft:Source Code Pro:style=Italic:size=11
-URxvt*boldItalicFont: xft:Source Code Pro:style=Bold Italic:size=11
+URxvt*font: xft:Hack Nerd Font:size=11
+URxvt*boldFont: xft:Hack Nerd Font:style=Bold:size=11
+URxvt*italicFont: xft:Hack Nerd Font:style=Italic:size=11
+URxvt*boldItalicFont: xft:Hack Nerd Font:style=Bold Italic:size=11
 ! transparency
 URxvt*transparent: true
 URxvt*shading: 20
