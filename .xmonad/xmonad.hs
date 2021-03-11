@@ -33,6 +33,7 @@ main = do
 		} `additionalKeys`
 		[ ((myModMask, xK_t), spawn "brave") -- launch web browser
 		, ((0, xK_Insert), pasteSelection) -- X-selection-paste buffer
+		, ((0, xK_Print), spawn "maim -s -u | xclip -selection clipboard -t image/png -i")
 		, ((0, xF86XK_AudioRaiseVolume), spawn "amixer set Master 5%+")
 		, ((0, xF86XK_AudioLowerVolume), spawn "amixer set Master 5%-")
 		]
